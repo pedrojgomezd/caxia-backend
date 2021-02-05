@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\Customer as ResourcesCustomer;
+use App\Http\Resources\Customers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,9 @@ class CustomerController extends Controller
     {
         $customer = Customer::all();
 
-        return response()->json(ResourcesCustomer::collection($customer));
+        return response()->json(
+            Customers::collection($customer)
+        );
     }
 
     public function store(Request $request)
@@ -35,13 +37,15 @@ class CustomerController extends Controller
             'avatar' => $avatarPath
         ]);
 
-        return response()->json(new ResourcesCustomer($customer), 201);
+        return response()->json(new Customers($customer), 201);
     }
 
     public function show(Customer $customer)
     {
 
-        return response()->json(ResourcesCustomer::make($customer));
+        return response()->json(
+            Customers::make($customer)
+        );
     }
 
     public function update(Customer $customer, Request $request)
@@ -54,6 +58,6 @@ class CustomerController extends Controller
 
         $customer->update($data);
 
-        return response()->json(new ResourcesCustomer($customer->fresh()), 201);
+        return response()->json(new Customers($customer->fresh()), 201);
     }
 }

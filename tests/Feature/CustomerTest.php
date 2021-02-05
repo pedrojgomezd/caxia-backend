@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Http\Resources\Customer as ResourcesCustomer;
+use App\Http\Resources\Customers;
 use App\Models\Customer;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -20,7 +20,7 @@ class CustomerTest extends TestCase
 
         $response = $this->getJson('api/customers');
 
-        $resource = ResourcesCustomer::collection($customer)
+        $resource = Customers::collection($customer)
             ->response()->getData(true);
 
         $response->assertSuccessful();
@@ -34,7 +34,7 @@ class CustomerTest extends TestCase
 
         $customer = Customer::factory()->create();
 
-        $resource = ResourcesCustomer::make($customer)->response()->getData(true);
+        $resource = Customers::make($customer)->response()->getData(true);
 
         $response = $this->getJson("api/customers/$customer->id");
 
