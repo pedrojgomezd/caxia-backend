@@ -30,20 +30,31 @@ http://caxia.devwithme.site
 #### Frontend routes
 
 / o home = Works as guest registration
+
 /login
+
 / customers
+
 / customers / {id}
+
 / customers / {id} / edit
+
 / customers / create
 
 #### Api Backend Routes
 
 POST: / login
+
 POST: / logout
+
 POST: / customers / register
+
 GET: / customers
+
 GET: / customers / {id}
+
 PUT: / customers / {id}
 
 Email: admin@gmail.com
+
 Password: password
